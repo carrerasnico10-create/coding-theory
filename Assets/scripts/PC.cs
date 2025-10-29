@@ -23,16 +23,24 @@ public class PC : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Turn();
+        Move();
+        UpdatePosList();
+        
+    }
+    public void Turn()
+    {
         //turn
         float PIX = Input.GetAxis("Horizontal");
-        if (Time.time > FT) {
+        if (Time.time > FT)
+        {
             switch (PIX)
             {
                 case 1: transform.Rotate(new Vector3(0, 90, 0)); break;
                 case -1: transform.Rotate(new Vector3(0, -90, 0)); break;
             }
-            FT = Time.time+coolDownsec;
-            if(Input.GetKey(KeyCode.Q))
+            FT = Time.time + coolDownsec;
+            if (Input.GetKey(KeyCode.Q))
             {
                 transform.Rotate(new Vector3(90, 0, 0));
             }
@@ -41,12 +49,21 @@ public class PC : MonoBehaviour
                 transform.Rotate(new Vector3(-90, 0, 0));
             }
         }
+    }
+    public void Move()
+    {
         //move forward
         realpos += (transform.forward * speed * Time.deltaTime);
         Vector3 roundedPos = realpos.Vec3Round();
         transform.position = roundedPos;
-        if (listMax >0) {
-            if (lastRPos != realpos.Vec3Round()) {
+    }
+    public void UpdatePosList()
+    {
+        //update pos list
+        if (listMax > 0)
+        {
+            if (lastRPos != realpos.Vec3Round())
+            {
                 tList.Add(realpos.Vec3Round());
                 lastRPos = realpos.Vec3Round();
             }

@@ -1,5 +1,6 @@
 using extend;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -20,6 +21,7 @@ public class BodyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //test
         if (Input.GetKey(KeyCode.Z))
         {
             if (Time.time > wait)
@@ -36,15 +38,18 @@ public class BodyManager : MonoBehaviour
                 wait = Time.time + cooldown;
             }
         }
+        //end test
         move();
     }
+    //adds object and sets maxposlist
     public void Add()
     {
         pc.listMax += 1;
         pl.Add(Instantiate(body));
-        pl[pl.Count-1].SetActive(false);
-        resAdded = true;
+        pl[pl.Count-1].SetActive(false);//hide initial add
+        resAdded = true;//let the move method know to make hidden object visible
     }
+    //removes object and sets pc maxposlist
     public void Remove()
     {
         if(pl.Count >0)
@@ -56,6 +61,10 @@ public class BodyManager : MonoBehaviour
     }
     public void move()
     {
+        /*
+         *it cheacks if the two lists are in sync 
+         * it is maped to the index of the game object list to the vector3 lis
+         */
         if (pc.tList.Count == pl.Count) {
             for (int i = 0; i < pl.Count; i++)
             {
@@ -69,6 +78,7 @@ public class BodyManager : MonoBehaviour
                 pl[i].SetActive(true);
             }
             resAdded = false;
+            // i have done it like this in case there is more then one hidden
         }
     }
 }
