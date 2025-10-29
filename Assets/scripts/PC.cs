@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using extend;
 public class PC : MonoBehaviour
 {
     public float speed;
@@ -27,11 +27,8 @@ public class PC : MonoBehaviour
             FT = Time.time+coolDownsec;
         }
         //move forward
-        realpos += transform.forward * speed * Time.deltaTime;
-        int x = (int)Math.Round(realpos.x);
-        int y = (int)Math.Round(realpos.y);
-        int z = (int)Math.Round(realpos.z);
-        Vector3 roundedPos = new Vector3(x,y,z);
+        realpos += (transform.forward * speed * Time.deltaTime);
+        Vector3 roundedPos = realpos.Vec3Round();
         transform.position = roundedPos;
     }
 }
