@@ -9,4 +9,11 @@ public class HeadCollide : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("body"))
+        {
+            Time.timeScale = 0f;
+        }
+    }
 }

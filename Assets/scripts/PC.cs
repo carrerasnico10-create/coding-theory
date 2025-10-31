@@ -64,7 +64,7 @@ public class PC : MonoBehaviour
         {
             if (lastRPos != realpos.Vec3Round())
             {
-                tList.Add(realpos.Vec3Round());
+                tList.Add(lastRPos);
                 lastRPos = realpos.Vec3Round();
             }
             while (tList.Count > listMax)
