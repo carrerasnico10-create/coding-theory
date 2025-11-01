@@ -8,7 +8,7 @@ public class BodyManager : MonoBehaviour
 {
     public PC pc;
     public GameObject body;
-    private List<GameObject> pl = new List<GameObject>();
+    public List<GameObject> pl = new List<GameObject>();
     private float wait;
     public float cooldown = 1f;
     private bool resAdded;
