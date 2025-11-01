@@ -6,6 +6,7 @@ TagManager:
   tags:
   - hit
   - body
+  - food
   layers:
   - Default
   - TransparentFX
